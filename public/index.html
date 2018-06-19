@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<link rel="stylesheet" href="recursos/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">-->
+<script src="recursos/js/angular.min.js"></script>
+	<title>DPA | Sistema Barco</title>
+</head>
+<body>
+	<div class="container" ng-controller="myCtrl">
+
+    <h1 align="center">Vehículo acuático no tripulado EDSON-J para supervisar la calidad de agua en zonas vulnerables a contaminación por metales pesados</h1>
+
+		<form class="form-inline" align="center">
+			<div class="form-group">
+				<label>Latitud Origen:</label>
+				<input type="text" class="form-control" ng-model="barc.latori">
+			</div>
+			<div class="form-group">
+				<label>Longitud Origen:</label>
+				<input type="text" class="form-control" ng-model="barc.lonori">
+			</div>
+		</br>
+			<div class="form-group">
+				<label>Latitud destino:</label>
+				<input type="text" class="form-control" ng-model="barc.latdes">
+			</div>
+			<div class="form-group">
+				<label>Longitud desttino:</label>
+				<input type="text" class="form-control" ng-model="barc.londes">
+			</div>
+		</br>
+		</br>
+			<button class="btn btn-primary" ng-click="addBarc()">Crear Ruta</button>
+	    <button class="btn btn-info" ng-click="update()">Subir</button>
+	    <button class="btn btn-info" ng-click="deselect()">Limpiar</button>
+		</form>
+
+		<div class="row">
+			<div class="col-sm-7 col-sm-offset-1">
+				<h1>Mapa de ubicacion</h1>
+				<div class="">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30620.240670909814!2d-71.51423217581922!3d-16.397883325419325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424b9e5cc0bba3%3A0x98dc56047c781bac!2sMariano+Melgar!5e0!3m2!1ses!2spe!4v1529367553609" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+			</div>
+			<div class="col-sm-4">
+				<h1>Sensores</h1>
+				<div>
+					<h3>sensor 1</h3>
+					<input type="text" class="form-control" ng-model="direction.londes">
+				</div>
+				<div>
+					<h3>sensor 2</h3>
+					<input type="text" class="form-control" ng-model="direction.londes">
+				</div>
+				<div>
+					<h3>sensor 3</h3>
+					<input type="text" class="form-control" ng-model="direction.londes">
+				</div>
+				<div>
+					<h3>sensor 4</h3>
+					<input type="text" class="form-control" ng-model="direction.londes">
+				</div>
+			</div>
+		</div>
+
+		<h1>Lista de rutas</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Lat. Origen</th>
+					<th>Lon. Origen</th>
+					<th>Lat. Destino</th>
+					<th>Lon. Destino</th>
+					<th>Accion</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="barc in barco">
+		          <td>{{barc.latori}}</td>
+		          <td>{{barc.lonori}}</td>
+		          <td>{{barc.latdes}}</td>
+							<td>{{barc.londes}}</td>
+		          <td><button class="btn btn-danger" ng-click="remove(barc._id)">Eliminar</button></td>
+		          <td><button class="btn btn-warning" ng-click="edit(barc._id)">Editar</button></td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+</body>
+<script src="controllers/controller.js"></script>
+<!--<script src="js/myCtrl.js"></script>-->
+</html>
